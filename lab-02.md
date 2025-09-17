@@ -28,7 +28,9 @@ plastic_waste <- plastic_waste %>%
 ``` r
 ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
   geom_histogram(binwidth = 0.2) +
-  facet_wrap( ~ continent)
+  facet_wrap( ~ continent) +
+  labs( title = "La distribution des quantités de déchets 
+        plastiques par habitant", subtitle = "Selon le continent", x = "Quantité de déchets plastiques par habitant", y = "Distribution")
 ```
 
 ![](lab-02_files/figure-gfm/plastic-waste-continent-1.png)<!-- -->
@@ -36,42 +38,43 @@ ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
 Certains continents ont des habitants qui produisent plus de déchets que
 d’autres. Par exemple, les continents de l’Amérique du Nord, de l’Asie
 et de l’Europe sont les plus grands producteurs de déchets. De plus,
-l’Océanie et l’Amérique du Sud en produisent moins que les continents.
-L’Afrique produit moins de déchets. En effet, pour le premier groupe, la
-majorité des habitants produisent de 0,00 à 0,25 kg/jour, alors que la
-minorité en produisent plus de 0,25 kg/jour. Pour le groupe de l’Océanie
-et de l’Amérique du Sud, la majorité des habitants produisent entre 0,00
-et 0,25 kg/jour, alors qu’une petite quantité d’habitants de l’Amérique
-du Sud en produisent plus de 0,50 kg/jour, comparé à un maximum de 0,50
-kg/jour pour l’Océanie. Finalement, pour l’Afrique, presque tous les
-habitants produisent de 0,00 à 0,25 kg/jour.
+l’Océanie et l’Amérique du Sud en produisent moins que les autres
+continents. L’Afrique produit le moins de déchets. En effet, pour le
+premier groupe, la majorité des habitants produisent de 0,00 à 0,25
+kg/jour, alors que d’autres en produisent plus de 0,25 kg/jour. Pour le
+groupe de l’Océanie et de l’Amérique du Sud, la majorité des habitants
+produisent entre 0,00 et 0,25 kg/jour, alors qu’une petite quantité
+d’habitants de l’Amérique du Sud en produisent plus de 0,50 kg/jour,
+comparé à un maximum de 0,50 kg/jour pour l’Océanie. Finalement, pour
+l’Afrique, presque tous les habitants produisent de 0,00 à 0,25 kg/jour.
 
 ### Exercise 2
 
 ``` r
-ggplot(plastic_waste, aes(x = plastic_waste_per_cap)) + 
-  geom_density(adjust = 1)
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap)) +
+  geom_density(adjust = 1) +
+  labs( title = "La quantité de déchets plastiques par habitant", x = "Quantité de déchets plastiques par habitant", y = "Densité")
 ```
 
 ![](lab-02_files/figure-gfm/plastic-waste-density-1.png)<!-- -->
 
 ``` r
 ggplot(plastic_waste, aes(x = plastic_waste_per_cap, color = continent)) + 
-  geom_density(adjust = 1)
+  geom_density(adjust = 1) + labs( title = "La quantité de déchets plastiques par habitant", subtitle = "Selon le continent", x = "Quantité de déchets plastiques par habitant", y = "Densité", color = "Continent")
 ```
 
 ![](lab-02_files/figure-gfm/plastic-waste-density-2.png)<!-- -->
 
 ``` r
 ggplot(plastic_waste, aes(x = plastic_waste_per_cap, color = continent, fill = continent)) + 
-  geom_density(adjust = 1)
+  geom_density(adjust = 1) + labs( title = "La quantité de déchets plastiques par habitant", subtitle = "Selon le continent", x = "Quantité de déchets plastiques par habitant", y = "Densité", color = "Continent", fill = "Continent")
 ```
 
 ![](lab-02_files/figure-gfm/plastic-waste-density-3.png)<!-- -->
 
 ``` r
 ggplot(plastic_waste, aes(x = plastic_waste_per_cap, color = continent, fill = continent)) + 
-  geom_density(adjust = 1, alpha = 0.4)
+  geom_density(adjust = 1, alpha = 0.4) + labs( title = "La quantité de déchets plastiques par habitant", subtitle = "Selon le continent", x = "Quantité de déchets plastiques par habitant", y = "Densité", color = "Continent", fill = "Continent")
 ```
 
 ![](lab-02_files/figure-gfm/plastic-waste-density-4.png)<!-- -->
@@ -85,7 +88,8 @@ Boxplot:
 
 ``` r
 ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap)) +
-  geom_boxplot()
+  geom_boxplot() +
+  labs( title = "La quantité de déchets plastiques par habitant selon le continent", x = "Continent", y = "Quantité de déchets plastiques par habitant")
 ```
 
 ![](lab-02_files/figure-gfm/plastic-waste-boxplot-1.png)<!-- -->
@@ -94,7 +98,8 @@ Violin plot:
 
 ``` r
 ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap)) +
-  geom_violin()
+  geom_violin() +
+  labs( title = "La quantité de déchets plastiques par habitant selon le continent", x = "Continent", y = "Quantité de déchets plastiques par habitant")
 ```
 
 ![](lab-02_files/figure-gfm/plastic-waste-violin-1.png)<!-- -->
@@ -105,8 +110,8 @@ l’estimation de la densité, ce que les boxplots ne permettent pas.
 ### Exercise 4
 
 ``` r
-ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = mismanaged_plastic_waste_per_cap, color = continent)) +
-  geom_point()
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = mismanaged_plastic_waste_per_cap, color = continent)) + geom_point() +
+  labs( title = "La quantité de déchets plastiques par habitant selon la quantité de déchets non gérés par habitant", subtitle = "Selon le continent", x = "Quantité de déchets plastiques par habitant", y = "Quantité de déchets non gérés par habitant", color = "Continent")
 ```
 
 ![](lab-02_files/figure-gfm/plastic-waste-mismanaged-1.png)<!-- -->
@@ -121,13 +126,16 @@ semble quand même bien gérer ses déchets, puisqu’ils en produisent
 beaucoup, mais que les valeurs en y sont peu élevées. Pour l’Amérique du
 Nord, les valeurs sont plus dispersées dans le graphique, de sorte que
 les valeurs en x et en y sont élevés, donc qu’ils produisent beaucoup et
-les gèrent mal.
+les gèrent mal. De son côté, l’Océanie produisent une quantité moyenne
+de déchets, mais les gèrent mal aussi. Même chose aussi pour l’Amérique
+du Sud.
 
 ### Exercise 5
 
 ``` r
 ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = total_pop)) +
-  geom_point()
+  geom_point() + 
+  labs( title = "La quantité de déchets plastiques par habitant selon la population totale", x = "Quantité de déchets plastiques par habitant", y = "Population totale")
 ```
 
     ## Warning: Removed 10 rows containing missing values or values outside the scale range
@@ -137,19 +145,44 @@ ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = total_pop)) +
 
 ``` r
 ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = coastal_pop)) +
-  geom_point()
+  geom_point() + 
+  labs( title = "La quantité de déchets plastiques par habitant selon la population côtière", x = "Quantité de déchets plastiques par habitant", y = "Population côtière")
 ```
 
 ![](lab-02_files/figure-gfm/plastic-waste-population-total-2.png)<!-- -->
+
 Les deux relations sont semblables. Il est difficile de confirmer à
 l’oeil nu si la tendance est plus forte dans un ou l’autre dans la
 graphique. La seule différence notable est que les données du deuxième
-graphique ont des valeurs en y plus importantes.
+graphique ont des valeurs en y plus élevées entre x = 0,0 et 0,2.
 
 ## Conclusion
 
 Recréez la visualisation:
 
 ``` r
-# insert code here
+plastic_waste_coastal <- plastic_waste %>% 
+  mutate(coastal_pop_prop = coastal_pop / total_pop) %>%
+  filter(plastic_waste_per_cap < 3)
+
+ggplot(plastic_waste_coastal, aes(x = coastal_pop_prop, y = plastic_waste_per_cap, color = continent)) +
+  geom_point() +
+  geom_smooth(method = "loess", color = "black") +
+  labs( title = "Quantité de déchets plastiques vs Proportion de la population côtière", subtitle = "Selon le continent", x = "Proportion de la population côtière (Coastal / total population)", y = "Nombre de déchets plastiques par habitant", color = "Continent")
 ```
+
+    ## `geom_smooth()` using formula = 'y ~ x'
+
+    ## Warning: Removed 10 rows containing non-finite outside the scale range
+    ## (`stat_smooth()`).
+
+    ## Warning: Removed 10 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](lab-02_files/figure-gfm/recreate-viz-1.png)<!-- -->
+
+La relation n’est pas linéaire, elle monte au début, avant de se
+stabiliser au milieu, pour finir en diminuant. Il existe aussi une forte
+dispersion des points. De plus, la zone grise représente l’incertitude
+de la tendance en noir. Comme elle s’élargit aux extrémités, cela
+indique une diminution des données, donc de la fiabilité de la tendance.
