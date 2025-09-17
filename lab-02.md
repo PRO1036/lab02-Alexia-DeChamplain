@@ -84,36 +84,67 @@ geom_density() restent constants pour toutes les données.
 Boxplot:
 
 ``` r
-# insert code here
+ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap)) +
+  geom_boxplot()
 ```
+
+![](lab-02_files/figure-gfm/plastic-waste-boxplot-1.png)<!-- -->
 
 Violin plot:
 
 ``` r
-# insert code here
+ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap)) +
+  geom_violin()
 ```
 
-Réponse à la question…
+![](lab-02_files/figure-gfm/plastic-waste-violin-1.png)<!-- -->
+
+Les violin plots permettent de voir la répartition des valeurs ou
+l’estimation de la densité, ce que les boxplots ne permettent pas.
 
 ### Exercise 4
 
 ``` r
-# insert code here
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = mismanaged_plastic_waste_per_cap, color = continent)) +
+  geom_point()
 ```
 
-Réponse à la question…
+![](lab-02_files/figure-gfm/plastic-waste-mismanaged-1.png)<!-- -->
+
+En général, on peut observer une relation linéaire pour chaque
+continent. En effet, quand la valeur de x augmente pour une donnée, elle
+augmente aussi en y. Pour l’Afrique, on peut observer que les habitants
+produisent moins de déchets, mais qu’ils ne les gèrent pas bien non
+plus. Ensuite, pour l’Asie, on voit qu’ils produisent beaucoup de
+déchets et qu’ils ne les gèrent pas bien non plus. Pour l’Europe, elle
+semble quand même bien gérer ses déchets, puisqu’ils en produisent
+beaucoup, mais que les valeurs en y sont peu élevées. Pour l’Amérique du
+Nord, les valeurs sont plus dispersées dans le graphique, de sorte que
+les valeurs en x et en y sont élevés, donc qu’ils produisent beaucoup et
+les gèrent mal.
 
 ### Exercise 5
 
 ``` r
-# insert code here
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = total_pop)) +
+  geom_point()
 ```
+
+    ## Warning: Removed 10 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](lab-02_files/figure-gfm/plastic-waste-population-total-1.png)<!-- -->
 
 ``` r
-# insert code here
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = coastal_pop)) +
+  geom_point()
 ```
 
-Réponse à la question…
+![](lab-02_files/figure-gfm/plastic-waste-population-total-2.png)<!-- -->
+Les deux relations sont semblables. Il est difficile de confirmer à
+l’oeil nu si la tendance est plus forte dans un ou l’autre dans la
+graphique. La seule différence notable est que les données du deuxième
+graphique ont des valeurs en y plus importantes.
 
 ## Conclusion
 

@@ -57,38 +57,40 @@ Car aes est dépendant des données, alors que les réglages écrits dans geom_d
 Boxplot:
 
 ```{r plastic-waste-boxplot}
-# insert code here
+ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap)) +
+  geom_boxplot()
 ```
 
 Violin plot:
 
 ```{r plastic-waste-violin}
-# insert code here
+ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap)) +
+  geom_violin()
 ```
 
-Réponse à la question...
+Les violin plots permettent de voir la répartition des valeurs ou l'estimation de la densité, ce que les boxplots ne permettent pas.
 
 ### Exercise 4
 
 
 ```{r plastic-waste-mismanaged}
-# insert code here
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = mismanaged_plastic_waste_per_cap, color = continent)) +
+  geom_point()
 ```
 
-Réponse à la question...
+En général, on peut observer une relation linéaire pour chaque continent. En effet, quand la valeur de x augmente pour une donnée, elle augmente aussi en y. Pour l'Afrique, on peut observer que les habitants produisent moins de déchets, mais qu'ils ne les gèrent pas bien non plus. Ensuite, pour l'Asie, on voit qu'ils produisent beaucoup de déchets et qu'ils ne les gèrent pas bien non plus. Pour l'Europe, elle semble quand même bien gérer ses déchets, puisqu'ils en produisent beaucoup, mais que les valeurs en y sont peu élevées. Pour l'Amérique du Nord, les valeurs sont plus dispersées dans le graphique, de sorte que les valeurs en x et en y sont élevés, donc qu'ils produisent beaucoup et les gèrent mal.
 
 ### Exercise 5
 
-
 ```{r plastic-waste-population-total}
-# insert code here
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = total_pop)) +
+  geom_point()
+
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = coastal_pop)) +
+  geom_point()
 ```
 
-```{r plastic-waste-population-coastal}
-# insert code here
-```
-
-Réponse à la question...
+Les deux relations sont semblables. Il est difficile de confirmer à l'oeil nu si la tendance est plus forte dans un ou l'autre dans la graphique. La seule différence notable est que les données du deuxième graphique ont des valeurs en y plus importantes.
 
 ## Conclusion
 
