@@ -1,7 +1,7 @@
 ---
 title: "Lab 02 - Plastic waste"
-author: "Votre nom"
-date: "La date"
+author: Alexia De Champlain
+date: 17 septembre 2025
 output: github_document
 ---
 
@@ -22,22 +22,35 @@ plastic_waste <- plastic_waste %>%
   filter(plastic_waste_per_cap < 3.5)
 ```
 
-
 ## Exercices
 
 ### Exercise 1
 
 ```{r plastic-waste-continent}
-# insert code here
+ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
+  geom_histogram(binwidth = 0.2) +
+  facet_wrap( ~ continent)
 ```
+
+Certains continents ont des habitants qui produisent plus de déchets que d'autres. Par exemple, les continents de l'Amérique du Nord, de l'Asie et de l'Europe sont les plus grands producteurs de déchets. De plus, l'Océanie et l'Amérique du Sud en produisent moins que les continents. L'Afrique produit moins de déchets. En effet, pour le premier groupe, la majorité des habitants produisent de 0,00 à 0,25 kg/jour, alors que la minorité en produisent plus de 0,25 kg/jour. Pour le groupe de l'Océanie et de l'Amérique du Sud, la majorité des habitants produisent entre 0,00 et 0,25 kg/jour, alors qu'une petite quantité d'habitants de l'Amérique du Sud en produisent plus de 0,50 kg/jour, comparé à un maximum de 0,50 kg/jour pour l'Océanie. Finalement, pour l'Afrique, presque tous les habitants produisent de 0,00 à 0,25 kg/jour.
 
 ### Exercise 2
 
 ```{r plastic-waste-density}
-# insert code here
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap)) + 
+  geom_density(adjust = 1)
+
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, color = continent)) + 
+  geom_density(adjust = 1)
+
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, color = continent, fill = continent)) + 
+  geom_density(adjust = 1)
+
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, color = continent, fill = continent)) + 
+  geom_density(adjust = 1, alpha = 0.4)
 ```
 
-Réponse à la question...
+Car aes est dépendant des données, alors que les réglages écrits dans geom_density() restent constants pour toutes les données.
 
 ### Exercise 3
 
